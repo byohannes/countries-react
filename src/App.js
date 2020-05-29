@@ -1,25 +1,28 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
-import CountryCards from "./components/CountryCards"
-import "./App.css";
+import CountryCards from './components/CountryCards';
+import SearchBar from './components/SearchBar';
+import './App.css';
 
 const App = () => {
-  const [darkMode, setMode] = useState(true);
-  const [error, setError] = useState(null); 
+  const [darkMode, setMode] = useState(false);
+  const [error, setError] = useState(null);
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital")
-      .then(res => res.json())
+    fetch(
+      'https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital'
+    )
+      .then((res) => res.json())
       .then(
-        (data) => { 
+        (data) => {
           setCountries(data);
         },
-        (error) => { 
+        (error) => {
           setError(error);
         }
-      )
-  }, [])
+      );
+  }, []);
 
   const changeMode = () => {
     setMode(!darkMode);
@@ -27,17 +30,18 @@ const App = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-   
+
   return (
     <>
-    <Navbar
+      <Navbar
         changeMode={changeMode}
-        mode={darkMode ? "" : "light"}
-        modeText={darkMode ?  "Light Mode" : "Dark Mode"}
-        moonMode={darkMode ?  "fa fa-sun-o" : "fa fa-moon-o"}
+        mode={darkMode ? '' : 'light'}
+        modeText={darkMode ? 'Light Mode' : 'Dark Mode'}
+        moonMode={darkMode ? 'fa fa-sun-o' : 'fa fa-moon-o'}
       />
-      <CountryCards countryDetails={countries}/>
-      </>
+      <SearchBar />
+      <CountryCards countryDetails={countries} />
+    </>
   );
 };
 
