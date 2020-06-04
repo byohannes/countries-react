@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Navbar from './components/Navbar';
-import CountryCards from './components/CountryCards';
-import SearchBar from './components/SearchBar';
+import {Navbar,CountryCards,SearchBar} from './components';
 import './App.css';
 
 const App = () => {
