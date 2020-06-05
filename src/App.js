@@ -6,7 +6,7 @@ const App = () => {
   const [darkMode, setMode] = useState(false);
   const [regionFilter, setRegionFilter] = useState('');
   const [countries, setCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -22,25 +22,23 @@ const App = () => {
   }, []);
 
   const handleInput = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchInput(e.target.value);
   };
   const handleSelect = (e) => {
     console.log(e.target.value);
     setRegionFilter(e.target.value);
   };
 
+  const changeMode = () => {
+    setMode(!darkMode);
+  };
   const filteredCountries = countries
     .filter((country) =>
       country.region.toLowerCase().includes(regionFilter.toLowerCase())
     )
     .filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      country.name.toLowerCase().includes(searchInput.toLowerCase())
     );
-
-  const changeMode = () => {
-    setMode(!darkMode);
-  };
-
   return (
     <>
       <Navbar
@@ -52,15 +50,9 @@ const App = () => {
       <SearchBar handleInput={handleInput} handleSelect={handleSelect} />
       <div className=" container">
         <div className="row">
-          {filteredCountries
-            .filter(
-              (country) =>
-                searchTerm === '' ||
-                country.name.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-            .map((country, index) => (
-              <Country key={index} countryInfo={country} />
-            ))}
+          {filteredCountries.map((country, index) => (
+            <Country key={index} countryInfo={country} />
+          ))}
         </div>
       </div>
     </>
