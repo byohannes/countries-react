@@ -4,7 +4,7 @@ import './App.css';
 
 const App = () => {
   const [darkMode, setMode] = useState(false);
-  const [error, setError] = useState(null);
+  const [regionFilter, setRegionFilter] = useState('');
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -16,7 +16,7 @@ const App = () => {
           setCountries(data);
         },
         (error) => {
-          setError(error);
+          console.log(error);
         }
       );
   }, []);
@@ -24,13 +24,22 @@ const App = () => {
   const handleInput = (e) => {
     setSearchTerm(e.target.value);
   };
+  const handleSelect = (e) => {
+    console.log(e.target.value);
+    setRegionFilter(e.target.value);
+  };
+
+  const filteredCountries = countries
+    .filter((country) =>
+      country.region.toLowerCase().includes(regionFilter.toLowerCase())
+    )
+    .filter((country) =>
+      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   const changeMode = () => {
     setMode(!darkMode);
   };
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
     <>
@@ -40,10 +49,10 @@ const App = () => {
         modeText={darkMode ? 'Light Mode' : 'Dark Mode'}
         moonMode={darkMode ? 'fa fa-sun-o' : 'fa fa-moon-o'}
       />
-      <SearchBar handleInput={handleInput} />
+      <SearchBar handleInput={handleInput} handleSelect={handleSelect} />
       <div className=" container">
         <div className="row">
-          {countries
+          {filteredCountries
             .filter(
               (country) =>
                 searchTerm === '' ||
