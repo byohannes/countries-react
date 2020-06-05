@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Country = ({countryInfo}) => {
+const Country = ({countryInfo,searchInput, handleInput,input}) => {
   const formatNumber = (num) =>
     num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   return (

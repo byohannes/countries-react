@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {Navbar,CountryCards,SearchBar} from './components';
+import {Navbar, Country, SearchBar} from './components';
 import './App.css';
 
 const App = () => {
   const [darkMode, setMode] = useState(false);
   const [error, setError] = useState(null);
   const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetch(
-      'https://restcountries.eu/rest/v2/all?fields=flag;name;population;region;capital'
-    )
+    fetch('https://restcountries.eu/rest/v2/all')
       .then((res) => res.json())
       .then(
         (data) => {
@@ -21,6 +20,10 @@ const App = () => {
         }
       );
   }, []);
+
+  const handleInput = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const changeMode = () => {
     setMode(!darkMode);
@@ -33,12 +36,24 @@ const App = () => {
     <>
       <Navbar
         changeMode={changeMode}
-        mode={darkMode ? '' : 'light'}
+        mode={darkMode ? 'mode-dark' : 'mode-light'}
         modeText={darkMode ? 'Light Mode' : 'Dark Mode'}
         moonMode={darkMode ? 'fa fa-sun-o' : 'fa fa-moon-o'}
       />
-      <SearchBar />
-      <CountryCards countryDetails={countries} />
+      <SearchBar handleInput={handleInput} />
+      <div className=" container">
+        <div className="row">
+          {countries
+            .filter(
+              (country) =>
+                searchTerm === '' ||
+                country.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((country, index) => (
+              <Country key={index} countryInfo={country} />
+            ))}
+        </div>
+      </div>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
-import Country from './Country';
-import CountryCards from './CountryCards'; 
+import Country from './Country'; 
 
-export { Navbar, Country, CountryCards, SearchBar};
+export { Navbar, Country,  SearchBar};
