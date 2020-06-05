@@ -24,11 +24,39 @@ body {
   transition: 0.3s;
   border-radius: 4px;
 }
-.card-title{
-    text-align: center;
+.card-title {
+  text-align: center;
 }
-.container{
-    display: flex;
+.container {
+  display: flex;
+}
+.input-control{
+  width: 25rem;
+  height: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 6px 0.1px rgba(0,0,0,.75);
+}
+::placeholder{
+  font-size: 1.2rem;
+  padding-left: 3rem;
+  color: var(--primary-color);
+}
+.has-search input{
+  padding-left: 3rem;
+}
+ .form-control-feedback {
+  position: absolute;
+  font-size: 1.2rem;  
+  width: 3rem; 
+  line-height: 7rem;
+  text-align: center; 
+  color: var(--primary-color);
 }
 
 .navbar {
@@ -125,21 +153,18 @@ body {
   margin-top: 5%;
   width: fit-content;
 }
-button{
-    background-color: transparent;
-    border: none;
-    outline: none !important;
-    color:black;
-    display: flex;
-    flex-direction: row;
-    font-size: 20px;
-    font-weight: 300;
-    cursor: pointer;
-  }
-.fa{
-    margin-top: 7px;
-    margin-right: 5px;
+button {
+  background-color: transparent;
+  border: none;
+  outline: none !important;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: 300;
+  cursor: pointer;
 }
+ 
 #country-details {
   margin-left: 2%;
   margin-right: 20% !important;
