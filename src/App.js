@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Navbar, Country, SearchBar} from './components';
+import {Navbar, Country, SearchBar, CountryDetails} from './components';
 import './App.css';
 
 const App = () => {
@@ -7,6 +7,8 @@ const App = () => {
   const [regionFilter, setRegionFilter] = useState('');
   const [countries, setCountries] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [isCountryClicked, setIsCountryClicked] = useState(false);
+  const [clickedCountry, setClickedCountry] = useState({});
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -48,13 +50,22 @@ const App = () => {
         moonMode={darkMode ? 'fa fa-sun-o' : 'fa fa-moon-o'}
       />
       <SearchBar handleInput={handleInput} handleSelect={handleSelect} />
-      <div className=" container">
-        <div className="row">
-          {filteredCountries.map((country, index) => (
-            <Country key={index} countryInfo={country} />
-          ))}
+      {!isCountryClicked ? (
+        <div className=" container">
+          <div className="row">
+            {filteredCountries.map((country) => (
+              <Country
+                key={country.name}
+                countryInfo={country}
+                setIsCountryClicked={setIsCountryClicked}
+                setClickedCountry={setClickedCountry}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <CountryDetails country={clickedCountry} />
+      )}
     </>
   );
 };
