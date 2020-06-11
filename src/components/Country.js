@@ -1,13 +1,12 @@
 import React from 'react';
 
-const Country = ({countryInfo, setIsCountryClicked, setClickedCountry}) => {
+const Country = ({countryInfo, setIsCountryClicked, setClickedCountry,formatNumber}) => {
   const handleClick = () => {
     setIsCountryClicked(true);
     setClickedCountry(countryInfo);
   };
 
-  const formatNumber = (num) =>
-    num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  
   return (
     <div
       className="col-sm-12 col-md-4 col-lg-3 mb-sm-2 mb-md-2 mt-md-3 mb-lg-3 mt-lg-3 p-2 page"

@@ -30,7 +30,8 @@ const App = () => {
     console.log(e.target.value);
     setRegionFilter(e.target.value);
   };
-
+  const formatNumber = (num) =>
+  num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   const changeMode = () => {
     setMode(!darkMode);
   };
@@ -59,12 +60,19 @@ const App = () => {
                 countryInfo={country}
                 setIsCountryClicked={setIsCountryClicked}
                 setClickedCountry={setClickedCountry}
+                formatNumber={formatNumber}
               />
             ))}
           </div>
         </div>
       ) : (
-        <CountryDetails country={clickedCountry} />
+        <CountryDetails
+          clickedCountry={clickedCountry}
+          setClickedCountry={setClickedCountry}
+          setIsCountryClicked={setIsCountryClicked}
+          formatNumber={formatNumber}
+          filteredCountries={filteredCountries}
+        />
       )}
     </>
   );

@@ -95,7 +95,7 @@ body {
   color: var(--primary-color);
 }
 
-#mode-name {
+.mode-name {
   color: var(--primary-color) !important;
 }
 
