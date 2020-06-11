@@ -85,12 +85,17 @@ body {
   background-color: var(--bg-color) !important;
 }
 
-.navbar a {
+.mode-button {
   color: var(--primary-color);
+  background-color: var(--bg-color) !important;
+  outline: none !important;
+  border: none !important;
 }
 
 .mode-name {
+  font-size: 1.2rem;
   color: var(--primary-color) !important;
+  background-color: var(--bg-color) !important;
 }
 
 .navbar {
@@ -139,6 +144,8 @@ body {
 .card-text {
   max-height: 250px;
   size: 1rem;
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
 }
 
 .row-info {
@@ -158,29 +165,31 @@ body {
   border-radius: 4px;
 }
 
-.btn {
-  margin-top: 5%;
-  width: fit-content;
-}
+ 
 
 .country-details { 
   font-size: 1.2rem;
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
 }
-.country-details-right { 
-  font-size: 1.2rem;
-}
+ 
 .details {
   margin-top: 0 !important;
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
 }
 
 .info {
   margin-left: 5%;
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
 }
 
-.borders {
-  width: 1%;
+.border-countries{
+  font-size: 1.2rem;
+  border: none;
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
 }
 
-.moon {
-  font-size: 20px;
-}
+ 

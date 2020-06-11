@@ -7,9 +7,9 @@ const Navbar = ({changeMode, mode, modeText, moonMode}) => {
         <h3>Where in the world?</h3>
       </div>
       <div>
-        <button onClick={() => changeMode()}>
+        <button className="mode-button" onClick={() => changeMode()}>
           <i className={moonMode}></i>
-          <p>{modeText}</p>
+          <p className="mode-name">{modeText}</p>
         </button>
       </div>
     </nav>

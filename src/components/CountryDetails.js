@@ -30,6 +30,7 @@ const CountryDetails = ({
     <div className="container info">
       <div className="row-info">
         <button
+         type="button"
           className="btn btn-outline-secondary backButton"
           onClick={handleBackButton}
         >
@@ -86,12 +87,12 @@ const CountryDetails = ({
               </div>
             </div>
 
-            <div className="mb-sm-1 d-flex mr-sm-5">
+            <div className="mb-sm-1 d-flex mr-sm-5 border-countries">
               <p className="d-flex mt-sm-2 mr-sm-2">
                 <strong>Border Countries: </strong>
               </p>
               {clickedCountry.borders.length > 0 ? (
-                <p className="d-inline-flex borders">
+                <p className="d-inline-flex ">
                   {clickedCountry.borders.map((border) => (
                     <button
                       type="button"

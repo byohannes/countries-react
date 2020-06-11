@@ -65,6 +65,7 @@ const App = () => {
                 setIsCountryClicked={setIsCountryClicked}
                 setClickedCountry={setClickedCountry}
                 formatNumber={formatNumber}
+                mode={darkMode ? 'mode-dark' : 'mode-light'}
               />
             ))}
           </div>

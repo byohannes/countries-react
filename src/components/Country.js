@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Country = ({countryInfo, setIsCountryClicked, setClickedCountry,formatNumber}) => {
+const Country = ({countryInfo, setIsCountryClicked, setClickedCountry,formatNumber,mode}) => {
   const handleClick = () => {
     setIsCountryClicked(true);
     setClickedCountry(countryInfo);
@@ -9,7 +9,7 @@ const Country = ({countryInfo, setIsCountryClicked, setClickedCountry,formatNumb
   
   return (
     <div
-      className="col-sm-12 col-md-4 col-lg-3 mb-sm-2 mb-md-2 mt-md-3 mb-lg-3 mt-lg-3 p-2 page"
+      className={`col-sm-12 col-md-4 col-lg-3 mb-sm-2 mb-md-2 mt-md-3 mb-lg-3 mt-lg-3 p-2 page ${mode}`}
       onClick={handleClick}
     >
       <div className="card">
