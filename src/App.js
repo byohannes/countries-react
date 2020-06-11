@@ -9,6 +9,7 @@ const App = () => {
   const [searchInput, setSearchInput] = useState('');
   const [isCountryClicked, setIsCountryClicked] = useState(false);
   const [clickedCountry, setClickedCountry] = useState({});
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -31,7 +32,7 @@ const App = () => {
     setRegionFilter(e.target.value);
   };
   const formatNumber = (num) =>
-  num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   const changeMode = () => {
     setMode(!darkMode);
   };
@@ -50,7 +51,10 @@ const App = () => {
         modeText={darkMode ? 'Light Mode' : 'Dark Mode'}
         moonMode={darkMode ? 'fa fa-sun-o' : 'fa fa-moon-o'}
       />
-      <SearchBar handleInput={handleInput} handleSelect={handleSelect} />
+      {showFilter ? null : (
+        <SearchBar handleInput={handleInput} handleSelect={handleSelect} />
+      )}
+
       {!isCountryClicked ? (
         <div className=" container">
           <div className="row">
@@ -72,6 +76,7 @@ const App = () => {
           setIsCountryClicked={setIsCountryClicked}
           formatNumber={formatNumber}
           filteredCountries={filteredCountries}
+          setShowFilter={setShowFilter}
         />
       )}
     </>

@@ -1,5 +1,4 @@
-
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -66,11 +65,6 @@ body {
   color: var(--primary-color);
 }
 
-.navbar {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
-  background-color: var(--bg-color) !important;
-}
-
 .form-inline span {
   border-radius: 4px;
   border: none;
@@ -124,7 +118,7 @@ body {
   background-color: var(--bg-color);
 }
 
-#backButton {
+.backButton {
   color: var(--primary-color);
   background-color: var(--bg-color);
 }
@@ -134,10 +128,9 @@ body {
   color: var(--primary-color) !important;
   background-color: var(--bg-color) !important;
   box-shadow: 0 8px 10px 0.1px rgba(0, 0, 0, 0.75);
-  border: none; 
+  border: none;
   border-radius: 4px;
 }
- 
 
 .card-img-top {
   height: 250px;
@@ -153,7 +146,6 @@ body {
 }
 
 .image-info {
-  /* margin-right: 10%; */
   margin-left: 0 !important;
 }
 
@@ -170,34 +162,19 @@ body {
   margin-top: 5%;
   width: fit-content;
 }
-button {
-  background-color: transparent;
-  border: none;
-  outline: none !important;
-  color: black;
-  display: flex;
-  flex-direction: row;
-  font-size: 20px;
-  font-weight: 300;
-  cursor: pointer;
-}
 
-#country-details {
-  margin-left: 2%;
-  margin-right: 20% !important;
-  padding-right: 0 !important;
+.country-details { 
+  font-size: 1.2rem;
 }
-
-#details {
+.country-details-right { 
+  font-size: 1.2rem;
+}
+.details {
   margin-top: 0 !important;
 }
 
-#info {
+.info {
   margin-left: 5%;
-}
-
-.borders {
-  width: 1%;
 }
 
 .borders {
@@ -206,13 +183,4 @@ button {
 
 .moon {
   font-size: 20px;
-}
-
-a#mode-name {
-  font-size: 20px;
-}
-
-a#mode-name:hover {
-  background-color: rgb(230, 181, 174);
-  text-decoration: none;
 }
